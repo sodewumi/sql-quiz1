@@ -157,3 +157,144 @@ Northwest and Southwest regions, this time using an 'IN' clause.
 
 
 SELECT email FROM Salespeople WHERE region IN ('Northwest', 'Southwest');
+
+
+==========
+12
+
+-----
+
+Write a query that shows the email, given name, and surname of all
+salespeople in either the Northwest or Southwest regions whose surnames start
+with the letter 'M'.
+
+-----
+
+
+SELECT email, givenname, surname FROM Salespeople WHERE (region = 'Northwest' OR region = 'Southwest') AND surname LIKE 'M%';
+
+
+==========
+13
+
+-----
+
+Write a query that shows the melon type, common name, price, and the
+price of the melon given in euros. The 'melons' table has prices in dollars,
+and the dollar to euro conversion rate is 0.735693.
+
+
+-----
+
+
+SELECT melon_type, common_name, price, price * 0.735693 FROM Melons;
+
+
+==========
+14
+
+-----
+
+Write a query that shows the total number of customers in our customer
+table.
+
+-----
+
+
+SELECT COUNT(*) FROM Customers;
+
+
+==========
+15
+
+-----
+
+Write a query that counts the number of orders shipped to California.
+
+-----
+
+
+SELECT COUNT(*) FROM Orders WHERE shipto_state = 'CA';
+
+
+==========
+16
+
+-----
+
+Write a query that shows the total amount of money spent across all melon
+orders.
+
+-----
+
+
+SELECT SUM(order_total) FROM Orders;
+
+
+==========
+17
+
+-----
+
+Write a query that shows the average order cost.
+
+-----
+
+
+SELECT AVG(order_total) FROM Orders;
+
+
+==========
+18
+
+-----
+
+Write a query that shows the order total that was lowest in price.
+
+-----
+
+
+SELECT MIN(order_total) FROM Orders;
+
+
+==========
+19
+
+-----
+
+Write a query that fetches the id of the customer whose email is 
+'phyllis@demizz.edu'.
+
+-----
+
+
+SELECT id FROM Customers WHERE email = 'phyllis@demizz.edu';
+
+
+==========
+20
+
+-----
+
+Write a query that shows the id, status and order_total for all orders 
+made by customer 100.
+
+-----
+
+
+SELECT id, status, order_total FROM Orders WHERE customer_id = 100;
+
+
+==========
+21
+
+-----
+
+Write a single query that shows the id, status, and order total for all
+orders made by 'phyllis@demizz.edu'. Use a subselect to do this.
+
+
+-----
+
+
+SELECT id, status, order_total FROM Orders WHERE customer_id = (SELECT id FROM Customers WHERE email = 'phyllis@demizz.edu');
